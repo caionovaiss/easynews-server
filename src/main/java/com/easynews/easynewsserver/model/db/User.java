@@ -9,13 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "email")
 @Table(name = "users")
+@Entity(name = "users")
+@EqualsAndHashCode(of = "email")
 public class User implements UserDetails {
 
     @Id

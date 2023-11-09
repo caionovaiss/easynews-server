@@ -1,11 +1,13 @@
 package com.easynews.easynewsserver.service;
 
+import com.easynews.easynewsserver.config.TokenService;
 import com.easynews.easynewsserver.model.UserRequest;
 import com.easynews.easynewsserver.model.db.User;
 import com.easynews.easynewsserver.model.db.UserRole;
 import com.easynews.easynewsserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +18,10 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class UserService implements UserDetailsService {
 
-    UserRepository userRepository;
+    private UserRepository userRepository;
+    private AuthenticationManager authenticationManager;
+
+    private TokenService tokenService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,7 +35,7 @@ public class UserService implements UserDetailsService {
     public void registerUser(UserRequest userRegRequest) {
         User user = convertToUser(userRegRequest);
 
-        if(userRepository.findById(userRegRequest.email()).isPresent()){
+        if (this.userRepository.findById(userRegRequest.email()).isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User email already registered");
         }
 
@@ -48,5 +53,4 @@ public class UserService implements UserDetailsService {
 
         return user;
     }
-
 }
