@@ -1,4 +1,4 @@
-package com.easynews.easynewsserver.model.db;
+package com.easynews.easynewsserver.model;
 
 public enum UserRole {
 

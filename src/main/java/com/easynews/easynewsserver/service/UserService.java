@@ -3,7 +3,7 @@ package com.easynews.easynewsserver.service;
 import com.easynews.easynewsserver.config.TokenService;
 import com.easynews.easynewsserver.model.UserRequest;
 import com.easynews.easynewsserver.model.db.User;
-import com.easynews.easynewsserver.model.db.UserRole;
+import com.easynews.easynewsserver.model.UserRole;
 import com.easynews.easynewsserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
