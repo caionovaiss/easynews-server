@@ -1,5 +1,6 @@
 package com.easynews.easynewsserver.model.db;
 
+import com.easynews.easynewsserver.model.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
