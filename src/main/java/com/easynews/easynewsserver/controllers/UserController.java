@@ -1,18 +1,16 @@
 package com.easynews.easynewsserver.controllers;
 
 import com.easynews.easynewsserver.config.TokenService;
-import com.easynews.easynewsserver.model.AuthRequest;
-import com.easynews.easynewsserver.model.AuthResponse;
-import com.easynews.easynewsserver.model.UserRequest;
+import com.easynews.easynewsserver.model.*;
+import com.easynews.easynewsserver.model.db.News;
 import com.easynews.easynewsserver.model.db.User;
 import com.easynews.easynewsserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
@@ -39,4 +37,19 @@ public class UserController {
         userService.registerUser(userRequest);
     }
 
+    @PostMapping("/update")
+    public User updateUserData(@RequestBody UpdateUserRequest updateUserRequest) {
+        return userService.updateUserData(updateUserRequest);
+    }
+
+    @GetMapping
+    public UserResponse getUser(@RequestBody GetUserRequest getUserRequest) {
+        System.out.println("user email: " + getUserRequest.userEmail());
+        return userService.getUser(getUserRequest.userEmail());
+    }
+
+    @GetMapping("/getUserFavoriteNews")
+    public Set<String> getUserFavoriteNews(@RequestBody GetUserRequest getUserRequest) {
+        return userService.getAllUserFavoriteNews(getUserRequest.userEmail());
+    }
 }
