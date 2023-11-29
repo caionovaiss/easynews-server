@@ -10,10 +10,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(path = "/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -51,5 +52,10 @@ public class UserController {
     @GetMapping("/getUserFavoriteNews")
     public Set<String> getUserFavoriteNews(@RequestBody GetUserRequest getUserRequest) {
         return userService.getAllUserFavoriteNews(getUserRequest.userEmail());
+    }
+
+    @GetMapping("/allUsers")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }
