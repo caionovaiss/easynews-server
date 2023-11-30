@@ -47,6 +47,7 @@ public class UserService implements UserDetailsService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario ja registrado");
         } else {
             this.userRepository.save(user);
+            System.out.println("Usuario registrado com sucesso");
         }
     }
 
@@ -57,7 +58,7 @@ public class UserService implements UserDetailsService {
         user.setEmail(userRegRequest.email());
         user.setRole(userRegRequest.role());
         user.setPassword(new BCryptPasswordEncoder().encode(userRegRequest.password()));
-        user.setDateOfBirth(userRegRequest.dateOfBirth());
+        user.setAge(userRegRequest.age());
         user.setState(userRegRequest.state());
         user.setAllowSlang(userRegRequest.allowSlang());
         user.setAllowRegionalExpressions(userRegRequest.allowRegionalExpressions());
@@ -84,7 +85,7 @@ public class UserService implements UserDetailsService {
                 user.getIsPcd(),
                 user.getIsPremium(),
                 user.getAcademicDegree(),
-                user.getDateOfBirth()
+                user.getAge()
         );
     }
 
@@ -93,7 +94,7 @@ public class UserService implements UserDetailsService {
         user.setName(updateUserRequest.name());
         user.setState(updateUserRequest.state());
         user.setIsPremium(updateUserRequest.isPremium());
-        user.setDateOfBirth(updateUserRequest.dateOfBirth());
+        user.setAge(updateUserRequest.age());
         user.setIsPcd(updateUserRequest.isPcd());
         user.setAllowSlang(updateUserRequest.allowSlang());
         user.setAllowRegionalExpressions(updateUserRequest.allowRegionalExpressions());
