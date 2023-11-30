@@ -11,6 +11,6 @@ public record UserResponse(
         String isPcd,
         String isPremium,
         String academicDegree,
-        String dateOfBirth
+        String age
 ) {
 }

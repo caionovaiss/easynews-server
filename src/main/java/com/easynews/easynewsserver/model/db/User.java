@@ -36,8 +36,8 @@ public class User implements UserDetails {
     @Column(name = "isPremium", nullable = false)
     private String isPremium;
 
-    @Column(name = "dateOfBirth", nullable = false)
-    private String dateOfBirth;
+    @Column(name = "age", nullable = false)
+    private String age;
 
     @Column(name = "state", nullable = false)
     private String state;
@@ -109,8 +109,8 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public void setState(String state) {
@@ -157,8 +157,8 @@ public class User implements UserDetails {
         return isPremium;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getAge() {
+        return age;
     }
 
     public String getState() {
