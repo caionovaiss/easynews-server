@@ -44,10 +44,10 @@ public class UserController {
         return userService.updateUserData(updateUserRequest);
     }
 
-    @GetMapping
-    public UserResponse getUser(@RequestBody GetUserRequest getUserRequest) {
-        System.out.println("user email: " + getUserRequest.userEmail());
-        return userService.getUser(getUserRequest.userEmail());
+    @GetMapping("/getUser")
+    public UserResponse getUser(@RequestParam String userEmail) {
+        System.out.println("user email: " + userEmail);
+        return userService.getUser(userEmail);
     }
 
     @GetMapping("/getUserFavoriteNews")
